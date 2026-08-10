@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LEWMAN — Confecciones y Disfraces: moda infantil contemporánea, cómoda y responsable.">
+  <title>LEWMAN — Confecciones y Disfreces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #202321;
+      --muted: #757b76;
+      --paper: #fbfaf6;
+      --surface: #f1eee8;
+      --surface-2: #e4e0d7;
+      --accent: #b7474c;
+      --accent-dark: #92363b;
+      --sage: #7f9081;
+      --line: #dedbd3;
+      --white: #fff;
+      --shadow: 0 22px 60px rgba(31, 37, 30, .1);
+    }
+    [data-theme="dark"] {
+      --ink: #f3f1eb;
+      --muted: #a9afa9;
+      --paper: #1d211e;
+      --surface: #282d29;
+      --surface-2: #363d37;
+      --line: #424942;
+      --white: #212621;
+      --shadow: 0 22px 60px rgba(0,0,0,.2);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; line-height: 1.5; transition: background .3s, color .3s; }
+    img { display: block; max-width: 100%; }
+    button, input, select { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1200px, calc(100% - 48px)); margin: 0 auto; }
+    .announcement { background: var(--ink); color: var(--paper); font-size: 11px; letter-spacing: .14em; padding: 9px 20px; text-align: center; text-transform: uppercase; }
+    .topbar { align-items: center; border-bottom: 1px solid var(--line); display: flex; gap: 20px; justify-content: flex-end; padding: 10px 0; }
+    .topbar button { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 11px; letter-spacing: .04em; padding: 3px 0; }
+    .topbar button:hover { color: var(--accent); }
+    .main-nav { align-items: center; border-bottom: 1px solid var(--line); display: flex; gap: 38px; min-height: 86px; position: relative; z-index: 5; }
+    .logo { font-family: "Playfair Display", Georgia, serif; font-size: 29px; letter-spacing: -.06em; line-height: 1; margin-right: 14px; white-space: nowrap; }
+    .logo small { color: var(--accent); display: block; font-family: "DM Sans", sans-serif; font-size: 8px; font-weight: 600; letter-spacing: .31em; margin: 6px 0 0 2px; text-transform: uppercase; }
+    .nav-links { align-items: center; display: flex; flex: 1; gap: 24px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { font-size: 12px; position: relative; }
+    .nav-links a::after { background: var(--accent); bottom: -9px; content: ""; height: 1px; left: 0; position: absolute; transform: scaleX(0); transform-origin: left; transition: transform .2s; width: 100%; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-actions { align-items: center; display: flex; gap: 16px; }
+    .icon-btn { background: none; border: 0; cursor: pointer; display: grid; padding: 4px; place-items: center; position: relative; }
+    .icon-btn svg { height: 18px; stroke: currentColor; width: 18px; }
+    .badge { align-items: center; background: var(--accent); border-radius: 50%; color: #fff; display: flex; font-size: 9px; height: 15px; justify-content: center; position: absolute; right: -4px; top: -6px; width: 15px; }
+    .menu-btn { display: none; }
+    .hero { min-height: 590px; overflow: hidden; position: relative; }
+    .hero::after { background: linear-gradient(90deg, rgba(27,34,29,.7), rgba(27,34,29,.08)); content: ""; inset: 0; pointer-events: none; position: absolute; }
+    .hero-image { height: 100%; inset: 0; object-fit: cover; object-position: 50% 46%; position: absolute; width: 100%; }
+    .hero-content { color: #fff; max-width: 500px; padding: 115px 0; position: relative; z-index: 1; }
+    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .22em; margin: 0 0 18px; text-transform: uppercase; }
+    .hero h1 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(49px, 7vw, 84px); font-weight: 500; letter-spacing: -.07em; line-height: .94; margin: 0; }
+    .hero-copy { font-size: 15px; margin: 28px 0 34px; max-width: 370px; }
+    .button { align-items: center; background: var(--accent); border: 1px solid var(--accent); color: #fff; cursor: pointer; display: inline-flex; font-size: 12px; font-weight: 600; gap: 10px; justify-content: center; letter-spacing: .04em; padding: 14px 22px; transition: background .2s, border .2s, transform .2s; }
+    .button:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); }
+    .button.ghost { background: transparent; border-color: rgba(255,255,255,.7); margin-left: 9px; }
+    .button.ghost:hover { background: #fff; color: #202321; }
+    .scroll-note { align-items: center; bottom: 28px; color: #fff; display: flex; font-size: 10px; gap: 11px; left: 0; letter-spacing: .15em; position: absolute; text-transform: uppercase; z-index: 1; }
+    .scroll-note::before { background: #fff; content: ""; height: 1px; width: 36px; }
+    .section { padding: 100px 0; }
+    .section-head { align-items: end; display: flex; justify-content: space-between; margin-bottom: 38px; }
+    .section-head h2, .newsletter h2 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(34px, 4.5vw, 53px); font-weight: 500; letter-spacing: -.065em; line-height: 1; margin: 0; }
+    .section-head p { color: var(--muted); font-size: 13px; margin: 0; max-width: 275px; }
+    .category-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
+    .category { background: var(--surface); overflow: hidden; position: relative; }
+    .category img { aspect-ratio: .82; object-fit: cover; transition: transform .55s cubic-bezier(.2,.7,.2,1); width: 100%; }
+    .category:hover img { transform: scale(1.05); }
+    .category::after { background: linear-gradient(0deg, rgba(15,20,15,.6), transparent 50%); content: ""; inset: 0; pointer-events: none; position: absolute; }
+    .category-copy { bottom: 22px; color: #fff; left: 20px; position: absolute; z-index: 1; }
+    .category-copy h3 { font-family: "Playfair Display", Georgia, serif; font-size: 25px; font-weight: 500; margin: 0; }
+    .category-copy span { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .catalog-section { background: var(--surface); }
+    .catalog-toolbar { align-items: center; border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); display: flex; justify-content: space-between; margin-bottom: 28px; padding: 14px 0; }
+    .results { color: var(--muted); font-size: 12px; }
+    .toolbar-actions { display: flex; gap: 10px; }
+    .outline-btn, .sort-select { background: transparent; border: 1px solid var(--line); cursor: pointer; font-size: 11px; padding: 9px 13px; }
+    .outline-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .sort-select { color: var(--ink); }
+    .filter-panel { background: var(--paper); border: 1px solid var(--line); display: none; gap: 25px; grid-template-columns: repeat(4, 1fr); margin-bottom: 28px; padding: 23px; }
+    .filter-panel.open { display: grid; }
+    .filter-panel label { color: var(--muted); display: block; font-size: 10px; letter-spacing: .1em; margin-bottom: 8px; text-transform: uppercase; }
+    .filter-panel select { background: var(--paper); border: 0; border-bottom: 1px solid var(--line); color: var(--ink); outline: 0; padding: 8px 0; width: 100%; }
+    .product-grid { display: grid; gap: 18px 14px; grid-template-columns: repeat(4, 1fr); }
+    .product { min-width: 0; }
+    .product-photo { background: var(--surface-2); overflow: hidden; position: relative; }
+    .product-photo img { aspect-ratio: .79; object-fit: cover; transition: transform .45s; width: 100%; }
+    .product:hover .product-photo img { transform: scale(1.04); }
+    .product-tag { background: var(--paper); font-size: 9px; left: 10px; letter-spacing: .12em; padding: 6px 8px; position: absolute; text-transform: uppercase; top: 10px; z-index: 1; }
+    .product-tag.sale { background: var(--accent); color: #fff; }
+    .favorite { background: rgba(255,255,255,.8); border: 0; border-radius: 50%; cursor: pointer; height: 32px; position: absolute; right: 10px; top: 10px; transition: color .2s; width: 32px; z-index: 1; }
+    .favorite svg { height: 15px; stroke: currentColor; width: 15px; }
+    .favorite.active { color: var(--accent); }
+    .quick-view { background: var(--paper); border: 0; bottom: 0; cursor: pointer; font-size: 11px; left: 0; opacity: 0; padding: 12px; position: absolute; transform: translateY(100%); transition: opacity .25s, transform .25s; width: 100%; }
+    .product:hover .quick-view { opacity: 1; transform: translateY(0); }
+    .product-info { padding-top: 13px; }
+    .product-name { font-size: 13px; margin: 0 0 5px; }
+    .product-meta { align-items: center; display: flex; justify-content: space-between; }
+    .price { font-size: 13px; font-weight: 600; }
+    .rating { color: var(--accent); font-size: 11px; letter-spacing: 1px; }
+    .sizes { color: var(--muted); font-size: 10px; margin-top: 7px; }
+    .product-buy { background: none; border: 0; border-bottom: 1px solid var(--ink); cursor: pointer; font-size: 10px; margin-top: 11px; padding: 0 0 3px; }
+    .product-buy:hover { color: var(--accent); border-color: var(--accent); }
+    .collection-banner { align-items: center; background: #e1c9b3; display: grid; grid-template-columns: 1fr 1fr; min-height: 470px; overflow: hidden; }
+    .collection-banner img { height: 100%; object-fit: cover; width: 100%; }
+    .collection-copy { padding: 50px max(35px, 8vw); }
+    .collection-copy h2 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(40px, 5vw, 68px); font-weight: 500; letter-spacing: -.07em; line-height: .92; margin: 15px 0 23px; }
+    .collection-copy p { font-size: 13px; margin-bottom: 28px; max-width: 310px; }
+    .collection-copy .button { background: var(--ink); border-color: var(--ink); }
+    .collection-copy .button:hover { background: transparent; color: var(--ink); }
+    .benefits { display: grid; gap: 20px; grid-template-columns: repeat(5, 1fr); }
+    .benefit { border-right: 1px solid var(--line); padding-right: 20px; }
+    .benefit:last-child { border: 0; }
+    .benefit svg { height: 25px; margin-bottom: 20px; stroke: var(--accent); width: 25px; }
+    .benefit h3 { font-size: 13px; margin: 0 0 7px; }
+    .benefit p { color: var(--muted); font-size: 11px; margin: 0; }
+    .testimonials { background: var(--surface); }
+    .testimonial-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
+    .testimonial { background: var(--paper); padding: 28px; }
+    .testimonial .stars { color: var(--accent); font-size: 13px; letter-spacing: 3px; }
+    .testimonial blockquote { font-family: "Playfair Display", Georgia, serif; font-size: 20px; line-height: 1.3; margin: 22px 0 30px; }
+    .author { align-items: center; display: flex; gap: 11px; }
+    .author img { border-radius: 50%; height: 35px; object-fit: cover; width: 35px; }
+    .author span { font-size: 11px; }
+    .instagram-head { align-items: end; display: flex; justify-content: space-between; margin-bottom: 28px; }
+    .instagram-head a { color: var(--accent); font-size: 12px; }
+    .instagram-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+    .instagram-grid img { aspect-ratio: 1; object-fit: cover; transition: opacity .2s; width: 100%; }
+    .instagram-grid img:hover { opacity: .75; }
+    .newsletter { background: var(--sage); color: #fff; padding: 72px 0; }
+    .newsletter .container { align-items: center; display: flex; gap: 30px; justify-content: space-between; }
+    .newsletter h2 { max-width: 490px; }
+    .newsletter p { font-size: 12px; margin: 10px 0 0; max-width: 390px; }
+    .newsletter-form { display: flex; max-width: 390px; width: 100%; }
+    .newsletter-form input { background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,.7); color: #fff; outline: 0; padding: 13px 0; width: 100%; }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,.75); }
+    .newsletter-form button { background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,.7); color: #fff; cursor: pointer; font-size: 11px; letter-spacing: .1em; padding: 13px 0 13px 14px; text-transform: uppercase; }
+    footer { padding: 70px 0 26px; }
+    .footer-grid { display: grid; gap: 30px; grid-template-columns: 2fr repeat(3, 1fr); padding-bottom: 50px; }
+    .footer-brand p { color: var(--muted); font-size: 12px; margin-top: 20px; max-width: 210px; }
+    footer h3 { font-family: "DM Sans", sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .12em; margin: 5px 0 18px; text-transform: uppercase; }
+    footer ul { list-style: none; margin: 0; padding: 0; }
+    footer li { color: var(--muted); font-size: 12px; margin: 9px 0; }
+    footer li a:hover { color: var(--accent); }
+    .footer-bottom { align-items: center; border-top: 1px solid var(--line); color: var(--muted); display: flex; font-size: 10px; justify-content: space-between; padding-top: 19px; }
+    .payment { letter-spacing: .09em; }
+    .toast { background: var(--ink); bottom: 22px; color: var(--paper); font-size: 12px; left: 50%; opacity: 0; padding: 13px 18px; pointer-events: none; position: fixed; transform: translate(-50%, 15px); transition: opacity .25s, transform .25s; z-index: 20; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .modal-backdrop { align-items: center; background: rgba(20,25,21,.6); display: none; inset: 0; justify-content: center; padding: 20px; position: fixed; z-index: 10; }
+    .modal-backdrop.open { display: flex; }
+    .modal { background: var(--paper); display: grid; grid-template-columns: 1fr 1fr; max-width: 770px; position: relative; width: 100%; }
+    .modal img { height: 100%; object-fit: cover; width: 100%; }
+    .modal-copy { padding: 46px 34px; }
+    .modal-copy h2 { font-family: "Playfair Display", Georgia, serif; font-size: 33px; font-weight: 500; letter-spacing: -.06em; line-height: 1; margin: 8px 0 13px; }
+    .modal-copy p { color: var(--muted); font-size: 13px; }
+    .close-modal { background: none; border: 0; cursor: pointer; font-size: 20px; position: absolute; right: 13px; top: 8px; }
+    @media (max-width: 900px) {
+      .main-nav { gap: 20px; }
+      .nav-links { gap: 15px; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+      .benefits { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
+      .benefit:nth-child(3) { border: 0; }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(100% - 32px, 1200px); }
+      .topbar { display: none; }
+      .main-nav { min-height: 70px; }
+      .nav-links { background: var(--paper); border-bottom: 1px solid var(--line); display: none; flex-direction: column; gap: 21px; left: -16px; padding: 25px 16px; position: absolute; right: -16px; top: 69px; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: grid; }
+      .hero { min-height: 640px; }
+      .hero-content { padding-top: 100px; }
+      .hero h1 { font-size: 56px; }
+      .button.ghost { margin-left: 4px; }
+      .section { padding: 68px 0; }
+      .section-head, .instagram-head { align-items: start; flex-direction: column; gap: 15px; }
+      .category-grid { gap: 8px; grid-template-columns: 1fr; }
+      .category-copy h3 { font-size: 21px; }
+      .catalog-toolbar { align-items: start; flex-direction: column; gap: 12px; }
+      .filter-panel { grid-template-columns: 1fr 1fr; }
+      .product-grid { gap: 28px 9px; grid-template-columns: repeat(2, 1fr); }
+      .product-buy { font-size: 9px; }
+      .collection-banner { grid-template-columns: 1fr; }
+      .collection-banner img { max-height: 370px; }
+      .collection-copy { padding: 50px 28px; }
+      .benefits { grid-template-columns: repeat(2, 1fr); }
+      .benefit:nth-child(3) { border-right: 1px solid var(--line); }
+      .benefit:nth-child(even) { border: 0; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+      .instagram-grid img:nth-child(n+4) { display: none; }
+      .newsletter .container { align-items: start; flex-direction: column; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { align-items: start; flex-direction: column; gap: 9px; }
+      .modal { grid-template-columns: 1fr; max-height: 90vh; overflow: auto; }
+      .modal img { max-height: 280px; }
+      .modal-copy { padding: 26px; }
+    }
+    .whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, .45);
+  z-index: 9999;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+  </style>
+</head>
+<body>
+  <div class="announcement">Disfraces para niños y adultos · Consulta disponibilidad por WhatsApp</div>
+  <header>
+    <div class="container topbar">
+      <button type="button" data-lang>ES&nbsp; / &nbsp;EN</button>
+      <button type="button" data-currency>PEN&nbsp; S/</button>
+      <button type="button" data-theme>◐&nbsp; Modo oscuro</button>
+    </div>
+    <nav class="container main-nav">
+      <button class="icon-btn menu-btn" aria-label="Abrir menú" aria-expanded="false" data-menu>
+        <svg fill="none" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" stroke-width="1.5"/></svg>
+      </button>
+      <a class="logo" href="#inicio">LEWMAN<small>Confecciones y Disfraces</small></a>
+      <ul class="nav-links" data-nav>
+        <li><a href="#inicio">Inicio</a></li><li><a href="#categorias">Niños</a></li><li><a href="#categorias">Adultos</a></li><li><a href="#catalogo">Catálogo</a></li><li><a href="#coleccion">Promociones</a></li><li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Buscar" data-search><svg fill="none" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8" stroke-width="1.5"/><path d="m16 16 5 5" stroke-linecap="round" stroke-width="1.5"/></svg></button>
+        <button class="icon-btn" aria-label="Mi cuenta"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" stroke-width="1.5"/><path d="M4.5 20c.7-3.2 3.2-5 7.5-5s6.8 1.8 7.5 5" stroke-linecap="round" stroke-width="1.5"/></svg></button>
+        <button class="icon-btn" aria-label="Mi consulta" data-cart><svg fill="none" viewBox="0 0 24 24"><path d="M4 5h2l1.4 10.2a2 2 0 0 0 2 1.8h7.8a2 2 0 0 0 1.9-1.5L21 8H7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="10" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg><span class="badge" data-cart-count>0</span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <img class="hero-image" src="assets/treajes.webp" alt="Portada LEWMAN">
+      <div class="container hero-content">
+        <p class="eyebrow">Catálogo LEWMAN · Niños y adultos</p>
+        <h1>Disfraces<br>para hacer<br>historia.</h1>
+        <p class="hero-copy">Personajes, aventuras y momentos inolvidables. Encuentra el disfraz perfecto para tu próxima celebración.</p>
+        <a class="button" href="#catalogo">Ver catálogo <span>→</span></a>
+        <a class="button ghost" href="#contacto">Consultar disponibilidad</a>
+      </div>
+      <div class="container scroll-note">Desliza para descubrir</div>
+    </section>
+
+    <section class="section" id="categorias">
+      <div class="container">
+        <div class="section-head"><h2>Elige tu próxima aventura</h2><p>Disfraces para niños y adultos, listos para convertir cualquier ocasión en una historia.</p></div>
+        <div class="category-grid">
+          <a class="category" href="#catalogo"><img loading="lazy" src="assets/astro-nino.webp" alt="Disfraces para niños"><div class="category-copy"><h3>Niños</h3><span>Ver disfraces&nbsp; →</span></div></a>
+          <a class="category" href="#catalogo"><img loading="lazy" src="assets/traje-adulto.webp" alt="Disfraz de superhéroe para adultos"><div class="category-copy"><h3>Adultos</h3><span>Ver disfraces&nbsp; →</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section catalog-section" id="catalogo">
+      <div class="container">
+        <div class="section-head"><h2>Catálogo de disfraces</h2><p>Personajes para cumpleaños, fiestas, obras escolares y celebraciones especiales.</p></div>
+        <div class="catalog-toolbar"><span class="results" data-results>10 disfraces</span><div class="toolbar-actions"><button class="outline-btn" type="button" data-filter>☷ &nbsp; Filtrar</button><select class="sort-select" aria-label="Ordenar disfraces" data-sort><option>Ordenar: destacados</option><option>Precio: menor a mayor</option><option>Precio: mayor a menor</option></select></div></div>
+        <div class="filter-panel" data-filter-panel>
+          <div><label for="age">Público</label><select id="age"><option>Niños y adultos</option><option>Niños</option><option>Adultos</option></select></div>
+          <div><label for="size">Talla</label><select id="size"><option>Todas las tallas</option><option>Infantil</option><option>Juvenil</option><option>Adulto</option></select></div>
+          <div><label for="color">Temática</label><select id="color"><option>Todas las temáticas</option><option>Profesiones</option><option>Superhéroes</option><option>Fantasía</option><option>Animales</option></select></div>
+          <div><label for="price">Precio</label><select id="price"><option>Cualquier precio</option><option>Hasta S/ 30</option><option>S/ 30 - S/ 60</option><option>Más de S/ 60</option></select></div>
+        </div>
+        <div class="product-grid" data-products></div>
+      </div>
+    </section>
+
+    <section class="container section" id="coleccion">
+      <div class="collection-banner"><img loading="lazy" src="assets/circus 4.JPG" alt="Disfraces para una celebración LEWMAN"><div class="collection-copy"><p class="eyebrow">Promociones LEWMAN</p><h2>Una historia<br>para cada ocasión.</h2><p>Encuentra personajes para cumpleaños, colegios, fiestas temáticas y celebraciones que merecen un recuerdo especial.</p><a class="button" href="#contacto">Cualquier Consulta o duda comunicarse al numero que aparece en pantalla &nbsp; →</a></div></div>
+    </section>
+
+    <section class="section">
+      <div class="container"><div class="benefits">
+        <div class="benefit"><svg fill="none" viewBox="0 0 24 24"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7zM7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke-width="1.3"/></svg><h3>Envío rápido</h3><p>Recibe tu pedido en 2–4 días.</p></div>
+        <div class="benefit"><svg fill="none" viewBox="0 0 24 24"><path d="M5 10V7a7 7 0 0 1 14 0v3M4 10h16v10H4z" stroke-width="1.3"/></svg><h3>Pagos seguros</h3><p>Tu compra, siempre protegida.</p></div>
+        <div class="benefit"><svg fill="none" viewBox="0 0 24 24"><path d="M4 7h13v13H4zM8 4v6M13 4v6M17 12l3 3-3 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/></svg><h3>Cambios fáciles</h3><p>30 días para decidir.</p></div>
+        <div class="benefit"><svg fill="none" viewBox="0 0 24 24"><path d="m12 3 2.2 4.6L19 8.3l-3.5 3.5.8 5-4.3-2.3-4.3 2.3.8-5L5 8.3l4.8-.7L12 3Z" stroke-linejoin="round" stroke-width="1.3"/></svg><h3>Calidad garantizada</h3><p>Prendas para heredar.</p></div>
+        <div class="benefit"><svg fill="none" viewBox="0 0 24 24"><path d="M12 21s7-4.1 7-10V5l-7-2-7 2v6c0 5.9 7 10 7 10Z" stroke-width="1.3"/><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-width="1.3"/></svg><h3>Materiales certificados</h3><p>Mejor para ellos y el planeta.</p></div>
+      </div></div>
+    </section>
+
+    <section class="section testimonials"><div class="container"><div class="section-head"><h2>Lo que dicen<br>nuestras familias</h2><p>Más de 4.000 familias ya forman parte de la comunidad LEWMAN.</p></div><div class="testimonial-grid"><article class="testimonial"><div class="stars">★★★★★</div><blockquote>“La calidad se nota desde el primer momento. Y mi hija quiere ponerse el vestido todos los días.”</blockquote><div class="author"><img loading="lazy" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Sofía"><span>Sofía M.<br><small>Lima - Perú</small></span></div></article><article class="testimonial"><div class="stars">★★★★★</div><blockquote>“Ropa bonita que aguanta el ritmo de dos niños. El envío fue rapidísimo y el packaging precioso.”</blockquote><div class="author"><img loading="lazy" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Javier"><span>Javier R.<br><small>Lima - Perú</small></span></div></article><article class="testimonial"><div class="stars">★★★★★</div><blockquote>“Me encanta saber de dónde vienen los materiales. LEWMAN se ha convertido en nuestra marca de referencia.”</blockquote><div class="author"><img loading="lazy" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Clara"><span>Clara P.<br><small>Lima - Perú</small></span></div></article></div></div></section>
+
+    <section class="section"><div class="container"><div class="instagram-head"><div><p class="eyebrow">@lewman.profetacarmesi</p><h2>Pequeños momentos,<br>compartidos.</h2></div><a href="#instagram">Síguenos en Instagram&nbsp; ↗</a></div><div class="instagram-grid" id="instagram"><img loading="lazy" src="assets/NRO 1 DIFRAZ PORTA.webp" alt="Estilo infantil 1"><img loading="lazy" src="assets/NRO 2 DISFRAZ PORTA.webp" alt="Estilo infantil 2"><img loading="lazy" src="assets/NRO 3 DISFRAZ PORTA.webp" alt="Estilo infantil 3"><img loading="lazy" src="assets/DISFRAZ NRO 5.jpg" alt="Estilo infantil 4"><img loading="lazy" src="assets/batman.webp" alt="Estilo infantil 5"></div></div></section>
+
+    <section class="newsletter" id="contacto"><div class="container"><div><h2>Un lugar bonito<br>para estar al día.</h2><p>Novedades, inspiración y un 10% de descuento en tu primer pedido.</p></div><form class="newsletter-form" data-newsletter><input type="email" placeholder="Tu correo electrónico" required aria-label="Tu correo electrónico"><button type="submit">Suscribirme&nbsp; →</button></form></div></section>
+  </main>
+
+  <footer><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="logo" href="#inicio">LEWMAN<small>profeta carmesí</small></a><p>Personajes, aventuras y disfraces para hacer inolvidable cada celebración.</p></div><div><h3>Catálogo</h3><ul><li><a href="#catalogo">Todos los disfraces</a></li><li><a href="#categorias">Niños</a></li><li><a href="#categorias">Adultos</a></li><li><a href="#coleccion">Promociones</a></li></ul></div><div><h3>Ayuda</h3><ul><li><a href="#contacto">Disponibilidad y tallas</a></li><li><a href="#contacto">Reservas</a></li><li><a href="#contacto">Preguntas frecuentes</a></li><li><a href="#contacto">Contacto</a></li></ul></div><div><h3>Visítanos</h3><ul><li>Lima, Perú</li><li>hola@lewman.es</li><li>+51 954 774 316</li><li>WhatsApp disponible</li></ul></div></div><div class="footer-bottom"><span>© 2026 LEWMAN — Profeta Carmesí. Hecho con mimo.</span><span>Privacidad&nbsp;&nbsp; · &nbsp;&nbsp;Cookies&nbsp;&nbsp; · &nbsp;&nbsp;Términos</span><span class="payment">YAPE&nbsp; · &nbsp;PLIN&nbsp; · &nbsp;VISA</span></div></div></footer>
+  <div class="toast" role="status" data-toast></div>
+  <div class="modal-backdrop" data-modal><div class="modal"><button class="close-modal" type="button" aria-label="Cerrar" data-close>×</button><img data-modal-image alt=""><div class="modal-copy"><p class="eyebrow">Vista rápida</p><h2 data-modal-name></h2><p data-modal-description>Un disfraz listo para convertirse en el personaje favorito de la celebración. Consulta tallas y disponibilidad.</p><p class="price" data-modal-price></p><button class="button" type="button" data-modal-buy>Consultar disponibilidad&nbsp; →</button></div></div></div>
+
+  <script>
+    const products = [
+      { name: 'Astronauta', price: 45, image: 'assets/astro-nino.webp', tag: 'Nuevo', color: 'Blanco' },
+      { name: 'El Asombroso Circo Digital', price: 35, image: 'assets/traje-pomni.webp', tag: 'Nuevo', color: 'Fantasía' },
+      { name: 'El Asombroso Circo Digital Suplex', price: 50, image: 'assets/circus 4.JPG', tag: 'Nuevo', color: 'Fantasía' },
+      { name: 'Miles morales', price: 60, image: 'assets/milesmorales traje.webp', tag: 'Nuevo', color: 'Superhéroes' },
+      { name: 'Venom', price: 32, image: 'assets/disfraz venom.webp', tag: 'Nuevo', color: 'Fantasía' },
+      { name: 'Precursores', price: 40, oldPrice: 50, image: 'assets/tupac-Amaru-delante-scaled-1.webp', tag: 'Oferta', color: 'Fantasía' },
+      { name: 'Avengers', price: 35, image: 'assets/grupo de dis.webp', tag: '', color: 'Profesiones' },
+      { name: 'Mujer Araña adulto', price: 70, image: 'assets/traje-adulto.webp', tag: '', color: 'Profesiones' },
+      { name: 'Transformers Bumblebee', price: 40, image:'assets/transformer.webp', tag: '', color: 'Profesiones' },
+      { name: 'Naruto – Akatsuki', price: 45, image: 'assets/AKATSUKI.webp', tag: 'Nuevo', color: 'Profesiones' },
+      { name: 'Duende Navideño', price: 35, oldPrice: 40, image: 'assets/dnd nro 4.jpeg', tag: 'Oferta', color: 'Fantasía' },
+      { name: 'Rayo McQueen', price: 70, image: 'assets/raio macqueen.jpeg', tag: '', color: 'Fantasía' },
+      { name: 'Deadpol adulto', price: 90, image: 'assets/deadpol skin.JPG 2.JPG', tag: 'Nuevo', color: 'Fantasía' },
+      { name: 'Goku a sublimado', price: 50, image: 'assets/goku sublima.PNG', tag: 'Nuevo', color: 'Fantasía' },
+      { name: 'Goku a Base de Polinan', price: 35, image: 'assets/goku imagen.webp', tag: 'Nuevo', color: 'Fantasía' },
+      { name: 'Gladiador', price: 35, image: 'assets/gladiador 2.jpeg', tag: 'Nuevo', color: 'Fantasía' },
+       { name: 'Juego del Calamar adulto', price: 80, image: 'assets/calamar v y r.jpeg', tag: 'Nuevo', color: 'Fantasía' },
+       { name: 'Juego del Calamar Traje muñeca', price: 80, image: 'assets/juego de calamar muñeca.webp', tag: 'Nuevo', color: 'Fantasía' },
+       { name: 'Juego del Calamar niño', price: 60, image: 'assets/calamar niño.webp', tag: 'Nuevo', color: 'Fantasía' },
+       { name: 'Las Guerreras K-pop', price: 90, image: 'assets/kapop .JPG', tag: 'Nuevo', color: 'Fantasía' },
+       { name: 'Trajes a Pedido', price: 32, image: 'assets/trajez1.jpeg', tag: 'Nuevo', color: 'Fantasía' },
+];
+    let cart = 0;
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
+    const toast = (message) => { const el = $('[data-toast]'); el.textContent = message; el.classList.add('show'); clearTimeout(window.toastTimer); window.toastTimer = setTimeout(() => el.classList.remove('show'), 2300); };
+    const formatPrice = (price) => `S/ ${price.toFixed(2).replace('.', ',')}`;
+    function renderProducts(list = products) {
+      $('[data-results]').textContent = `${list.length} productos`;
+      $('[data-products]').innerHTML = list.map((product) => { const productIndex = products.findIndex((item) => item.name === product.name); return `<article class="product"><div class="product-photo">${product.tag ? `<span class="product-tag ${product.tag === 'Oferta' ? 'sale' : ''}">${product.tag}</span>` : ''}<button class="favorite" type="button" aria-label="Añadir a favoritos" data-favorite="${productIndex}"><svg fill="none" viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.4-8.8 10.3-8.8 10.3S3.2 14.2 3.2 8.8A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.8 2.4Z" stroke-width="1.5"/></svg></button><img loading="lazy" src="${product.image}" alt="${product.name}"><button class="quick-view" type="button" data-quick="${productIndex}">Vista rápida</button></div><div class="product-info"><p class="product-name">${product.name}</p><div class="product-meta"><span class="price">${formatPrice(product.price)} ${product.oldPrice ? `<del>${formatPrice(product.oldPrice)}</del>` : ''}</span><span class="rating">★★★★★</span></div><div class="sizes">Tallas infantiles y adultas disponibles</div><button class="product-buy" type="button" data-buy="${productIndex}">Consultar disponibilidad&nbsp; +</button></div></article>`; }).join('');
+    }
+    function addToCart(name) { cart += 1; $('[data-cart-count]').textContent = cart; toast(`${name} añadido a tu consulta`); }
+    renderProducts();
+    document.addEventListener('click', (event) => {
+      const buy = event.target.closest('[data-buy]');
+      if (buy) addToCart(products[Number(buy.dataset.buy)].name);
+      const favorite = event.target.closest('[data-favorite]');
+      if (favorite) { favorite.classList.toggle('active'); toast(favorite.classList.contains('active') ? 'Añadido a favoritos' : 'Eliminado de favoritos'); }
+      const quick = event.target.closest('[data-quick]');
+      if (quick) { const p = products[Number(quick.dataset.quick)]; $('[data-modal-image]').src = p.image; $('[data-modal-image]').alt = p.name; $('[data-modal-name]').textContent = p.name; $('[data-modal-price]').textContent = formatPrice(p.price); $('[data-modal-buy]').dataset.product = Number(quick.dataset.quick); $('[data-modal]').classList.add('open'); }
+      if (event.target.closest('[data-close]') || event.target === $('[data-modal]')) $('[data-modal]').classList.remove('open');
+      if (event.target.closest('[data-cart]')) toast(cart ? `Tienes ${cart} disfraz${cart > 1 ? 'es' : ''} en tu consulta` : 'Tu consulta está vacía');
+      if (event.target.closest('[data-filter]')) $('[data-filter-panel]').classList.toggle('open');
+    });
+    $('[data-modal-buy]').addEventListener('click', () => { addToCart(products[Number($('[data-modal-buy]').dataset.product)].name); $('[data-modal]').classList.remove('open'); });
+    $('[data-sort]').addEventListener('change', (event) => { const sorted = [...products]; if (event.target.selectedIndex === 1) sorted.sort((a,b) => a.price - b.price); if (event.target.selectedIndex === 2) sorted.sort((a,b) => b.price - a.price); renderProducts(sorted); });
+    $('[data-theme]').addEventListener('click', () => { document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; toast(document.documentElement.dataset.theme === 'dark' ? 'Modo oscuro activado' : 'Modo claro activado'); });
+    $('[data-lang]').addEventListener('click', () => toast('La versión en inglés estará disponible muy pronto')); $('[data-currency]').addEventListener('click', () => toast('Moneda seleccionada: soles (PEN)'));
+    $('[data-menu]').addEventListener('click', () => { const nav = $('[data-nav]'); const open = nav.classList.toggle('open'); $('[data-menu]').setAttribute('aria-expanded', open); });
+    $('[data-search]').addEventListener('click', () => { document.querySelector('#catalogo').scrollIntoView(); toast('Usa los filtros para encontrar tu prenda'); });
+    $('[data-newsletter]').addEventListener('submit', (event) => { event.preventDefault(); event.target.reset(); toast('¡Gracias! Revisa tu correo para confirmar la suscripción'); });
+  </script>
+<a class="whatsapp-float"
+   href="https://wa.me/51954774316?text=Hola%2C%20quiero%20consultar%20por%20un%20disfraz."
+   target="_blank"
+   rel="noopener">
+  ☏
+</a>
+<script>
+  const sections = document.querySelectorAll('.section, .collection-banner, .newsletter, footer');
+
+  sections.forEach((section) => section.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((items) => {
+    items.forEach((item) => {
+      if (item.isIntersecting) {
+        item.target.classList.add('is-visible');
+        observer.unobserve(item.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  sections.forEach((section) => observer.observe(section));
+</script><script>
+(() => {
+  const whatsapp = '51954774316';
+  const cart = [];
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .lew-cart-overlay { background: rgba(15,20,18,.42); inset: 0; opacity: 0; pointer-events: none; position: fixed; transition: opacity .25s ease; z-index: 10001; }
+    .lew-cart-overlay.open { opacity: 1; pointer-events: auto; }
+    .lew-cart { background: #fffdfa; box-shadow: -18px 0 42px rgba(0,0,0,.18); display: flex; flex-direction: column; height: 100vh; max-width: 410px; padding: 26px; position: fixed; right: 0; top: 0; transform: translateX(105%); transition: transform .3s ease; width: 92%; z-index: 10002; }
+    .lew-cart.open { transform: translateX(0); }
+    .lew-cart-head { align-items: center; border-bottom: 1px solid #e6e1d9; display: flex; justify-content: space-between; padding-bottom: 18px; }
+    .lew-cart-head h2 { font-family: Georgia, serif; font-size: 28px; margin: 0; }
+    .lew-cart-close { background: none; border: 0; cursor: pointer; font-size: 28px; }
+    .lew-cart-items { flex: 1; overflow: auto; padding: 18px 0; }
+    .lew-cart-item { align-items: center; border-bottom: 1px solid #eee8df; display: grid; gap: 12px; grid-template-columns: 58px 1fr auto; padding: 13px 0; }
+    .lew-cart-item img { height: 58px; object-fit: cover; width: 58px; }
+    .lew-cart-item strong { display: block; font-size: 14px; }
+    .lew-cart-item span { color: #777; font-size: 13px; }
+    .lew-quantity { align-items: center; display: flex; gap: 7px; margin-top: 8px; }
+    .lew-quantity button { background: #f0ebe4; border: 0; border-radius: 50%; cursor: pointer; height: 25px; width: 25px; }
+    .lew-remove { background: none; border: 0; color: #b94549; cursor: pointer; font-size: 18px; }
+    .lew-cart-footer { border-top: 1px solid #e6e1d9; padding-top: 18px; }
+    .lew-total { display: flex; font-size: 18px; justify-content: space-between; margin-bottom: 16px; }
+    .lew-checkout { background: #25D366; border: 0; color: white; cursor: pointer; font-size: 15px; font-weight: 700; padding: 15px; width: 100%; }
+    .lew-empty { color: #777; padding: 35px 0; text-align: center; }
+  `;
+  document.head.appendChild(style);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'lew-cart-overlay';
+
+  const drawer = document.createElement('aside');
+  drawer.className = 'lew-cart';
+  drawer.innerHTML = `
+    <div class="lew-cart-head">
+      <h2>Mi carrito</h2>
+      <button class="lew-cart-close" aria-label="Cerrar">×</button>
+    </div>
+    <div class="lew-cart-items"></div>
+    <div class="lew-cart-footer">
+      <div class="lew-total"><span>Total</span><strong>S/ 0,00</strong></div>
+      <button class="lew-checkout">Enviar pedido por WhatsApp</button>
+    </div>
+  `;
+
+  document.body.append(overlay, drawer);
+
+  const format = (price) => `S/ ${Number(price).toFixed(2).replace('.', ',')}`;
+  const openCart = () => {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+  };
+  const closeCart = () => {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+  };
+
+  function updateCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.querySelectorAll('[data-cart-count]').forEach((item) => {
+      item.textContent = count;
+    });
+  }
+
+  function renderCart() {
+    const items = drawer.querySelector('.lew-cart-items');
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    items.innerHTML = cart.length
+      ? cart.map((item, index) => `
+          <div class="lew-cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div>
+              <strong>${item.name}</strong>
+              <span>${format(item.price)}</span>
+              <div class="lew-quantity">
+                <button data-minus="${index}">−</button>
+                <b>${item.quantity}</b>
+                <button data-plus="${index}">+</button>
+              </div>
+            </div>
+            <button class="lew-remove" data-remove="${index}" aria-label="Eliminar">×</button>
+          </div>
+        `).join('')
+      : '<p class="lew-empty">Tu carrito está vacío.</p>';
+
+    drawer.querySelector('.lew-total strong').textContent = format(total);
+    updateCount();
+  }
+
+  function addProduct(name) {
+    const product = products.find((item) => item.name === name);
+    if (!product) return;
+
+    const inCart = cart.find((item) => item.name === name);
+    if (inCart) {
+      inCart.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    renderCart();
+    openCart();
+  }
+
+  document.addEventListener('click', (event) => {
+    const buyButton = event.target.closest('[data-buy]');
+    const modalBuy = event.target.closest('[data-modal-buy]');
+    const cartButton = event.target.closest('[data-cart]');
+
+    if (buyButton) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      addProduct(buyButton.dataset.buy);
+    }
+
+    if (modalBuy) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const product = products[Number(modalBuy.dataset.product)];
+      if (product) addProduct(product.name);
+    }
+
+    if (cartButton) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      openCart();
+    }
+  }, true);
+
+  drawer.addEventListener('click', (event) => {
+    const index = Number(event.target.dataset.plus ?? event.target.dataset.minus ?? event.target.dataset.remove);
+
+    if (event.target.dataset.plus !== undefined) {
+      cart[index].quantity += 1;
+    }
+
+    if (event.target.dataset.minus !== undefined) {
+      cart[index].quantity -= 1;
+      if (cart[index].quantity === 0) cart.splice(index, 1);
+    }
+
+    if (event.target.dataset.remove !== undefined) {
+      cart.splice(index, 1);
+    }
+
+    if (event.target.closest('.lew-cart-close')) closeCart();
+
+    if (event.target.closest('.lew-checkout')) {
+      if (!cart.length) return;
+
+      const detail = cart.map((item) =>
+        `• ${item.name} x${item.quantity} — ${format(item.price * item.quantity)}`
+      ).join('\n');
+
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const message = `Hola, deseo realizar este pedido:\n\n${detail}\n\nTotal: ${format(total)}`;
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    renderCart();
+  });
+
+  overlay.addEventListener('click', closeCart);
+  renderCart();
+})();
+</script><script>
+(() => {
+  const whatsappQuick = '51954774316';
+
+  const quickStyle = document.createElement('style');
+  quickStyle.textContent = `
+    .lew-quick-backdrop { align-items: center; background: rgba(10,14,12,.62); display: none; inset: 0; justify-content: center; padding: 20px; position: fixed; z-index: 10010; }
+    .lew-quick-backdrop.open { display: flex; }
+    .lew-quick-modal { background: #fffdfa; display: grid; grid-template-columns: 1.05fr .95fr; max-height: 90vh; max-width: 920px; overflow: auto; position: relative; width: 100%; }
+    .lew-quick-modal img { max-height: 560px; object-fit: contain; width: 100%; }
+    .lew-quick-gallery { background: #f3eee7; padding: 18px; }
+    .lew-thumbnails { display: flex; gap: 8px; margin-top: 10px; }
+    .lew-thumbnails button { background: #fff; border: 2px solid transparent; cursor: pointer; height: 62px; padding: 0; width: 54px; }
+    .lew-thumbnails button.active { border-color: #c4484c; }
+    .lew-thumbnails img { height: 100%; object-fit: cover; }
+    .lew-quick-info { padding: 52px 42px; }
+    .lew-quick-info h2 { font-family: Georgia, serif; font-size: 37px; margin: 0 0 14px; }
+    .lew-quick-price { font-size: 22px; font-weight: 700; margin: 18px 0; }
+    .lew-quick-data { border-top: 1px solid #e8e1d8; color: #666; line-height: 1.8; padding: 18px 0; }
+    .lew-quick-whatsapp { background: #25D366; border: 0; color: #fff; cursor: pointer; font-size: 15px; font-weight: 700; padding: 15px; width: 100%; }
+    .lew-quick-close { background: #fff; border: 0; border-radius: 50%; cursor: pointer; font-size: 25px; height: 40px; position: absolute; right: 13px; top: 13px; width: 40px; z-index: 2; }
+    @media (max-width: 650px) {
+      .lew-quick-modal { grid-template-columns: 1fr; }
+      .lew-quick-info { padding: 30px 24px; }
+      .lew-quick-info h2 { font-size: 30px; }
+    }
+  `;
+  document.head.appendChild(quickStyle);
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'lew-quick-backdrop';
+  document.body.appendChild(backdrop);
+
+  const money = (value) => `S/ ${Number(value).toFixed(2).replace('.', ',')}`;
+
+  document.addEventListener('click', (event) => {
+    const quick = event.target.closest('[data-quick]');
+    if (!quick) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    const product = products[Number(quick.dataset.quick)];
+    if (!product) return;
+
+    const images = product.images?.length ? product.images : [product.image];
+
+    backdrop.innerHTML = `
+      <article class="lew-quick-modal">
+        <button class="lew-quick-close" aria-label="Cerrar">×</button>
+        <div class="lew-quick-gallery">
+          <img class="lew-main-image" src="${images[0]}" alt="${product.name}">
+          <div class="lew-thumbnails">
+            ${images.map((image, index) => `
+              <button class="${index === 0 ? 'active' : ''}" data-image="${image}">
+                <img src="${image}" alt="Vista ${index + 1}">
+              </button>
+            `).join('')}
+          </div>
+        </div>
+        <div class="lew-quick-info">
+          <p>DISFRAZ LEWMAN</p>
+          <h2>${product.name}</h2>
+          <div class="lew-quick-price">${money(product.price)}</div>
+          <div class="lew-quick-data">
+            <div><strong>Color:</strong> ${product.color || 'Consultar disponibilidad'}</div>
+            <div><strong>Tallas:</strong> Consultar disponibilidad</div>
+            <div><strong>Estado:</strong> ${product.tag || 'Disponible por pedido'}</div>
+          </div>
+          <button class="lew-quick-whatsapp">Consultar por WhatsApp</button>
+        </div>
+      </article>
+    `;
+
+    backdrop.classList.add('open');
+
+    backdrop.querySelectorAll('[data-image]').forEach((button) => {
+      button.addEventListener('click', () => {
+        backdrop.querySelector('.lew-main-image').src = button.dataset.image;
+        backdrop.querySelectorAll('[data-image]').forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+      });
+    });
+
+    backdrop.querySelector('.lew-quick-close').addEventListener('click', () => {
+      backdrop.classList.remove('open');
+    });
+
+    backdrop.querySelector('.lew-quick-whatsapp').addEventListener('click', () => {
+      const message = `Hola, quiero consultar por el disfraz: ${product.name}. Precio: ${money(product.price)}.`;
+      window.open(`https://wa.me/${whatsappQuick}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  }, true);
+
+  backdrop.addEventListener('click', (event) => {
+    if (event.target === backdrop) backdrop.classList.remove('open');
+  });
+})();
+</script><script>
+(() => {
+  const grid = document.querySelector('[data-products]');
+  if (!grid) return;
+
+  const filterStyle = document.createElement('style');
+  filterStyle.textContent = `
+    .lew-filters {
+      background: #f3eee7;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(5, 1fr);
+      margin: 0 0 28px;
+      padding: 16px;
+    }
+
+    .lew-filters select,
+    .lew-filters button {
+      background: #fff;
+      border: 1px solid #ddd4c9;
+      color: #222;
+      font: inherit;
+      padding: 11px;
+    }
+
+    .lew-filters button {
+      background: #202521;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      .lew-filters { grid-template-columns: repeat(2, 1fr); }
+    }
+  `;
+  document.head.appendChild(filterStyle);
+
+  const filterBox = document.createElement('div');
+  filterBox.className = 'lew-filters';
+  filterBox.innerHTML = `
+    <select data-filter-category><option value="">Todos los tipos</option></select>
+    <select data-filter-age><option value="">Todas las edades</option></select>
+    <select data-filter-size><option value="">Todas las tallas</option></select>
+    <select data-filter-price>
+      <option value="">Todos los precios</option>
+      <option value="30">Hasta S/ 30</option>
+      <option value="40">Hasta S/ 40</option>
+      <option value="more">Más de S/ 40</option>
+    </select>
+    <button type="button" data-filter-reset>Limpiar filtros</button>
+  `;
+
+  grid.parentNode.insertBefore(filterBox, grid);
+
+  const category = filterBox.querySelector('[data-filter-category]');
+  const age = filterBox.querySelector('[data-filter-age]');
+  const size = filterBox.querySelector('[data-filter-size]');
+  const price = filterBox.querySelector('[data-filter-price]');
+
+  const values = (field) => [
+    ...new Set(products.flatMap((product) => {
+      const value = product[field];
+      return Array.isArray(value) ? value : value ? [value] : [];
+    }))
+  ];
+
+  function addOptions(select, list) {
+    list.forEach((value) => {
+      select.insertAdjacentHTML('beforeend', `<option value="${value}">${value}</option>`);
+    });
+  }
+
+  addOptions(category, values('category'));
+  addOptions(age, values('age'));
+  addOptions(size, values('sizes'));
+
+  function applyFilters() {
+    const result = products.filter((product) => {
+      const productSizes = product.sizes || [];
+
+      if (category.value && product.category !== category.value) return false;
+      if (age.value && product.age !== age.value) return false;
+      if (size.value && !productSizes.includes(size.value)) return false;
+
+      if (price.value === '30' && product.price > 30) return false;
+      if (price.value === '40' && product.price > 40) return false;
+      if (price.value === 'more' && product.price <= 40) return false;
+
+      return true;
+    });
+
+    renderProducts(result);
+  }
+
+  [category, age, size, price].forEach((input) => {
+    input.addEventListener('change', applyFilters);
+  });
+
+  filterBox.querySelector('[data-filter-reset]').addEventListener('click', () => {
+    category.value = '';
+    age.value = '';
+    size.value = '';
+    price.value = '';
+    renderProducts(products);
+  });
+})();
+</script><script>
+(() => {
+  const searchStyle = document.createElement('style');
+  searchStyle.textContent = `
+    .lew-search-backdrop {
+      background: rgba(15,20,18,.56);
+      display: none;
+      inset: 0;
+      padding: 8vh 20px 20px;
+      position: fixed;
+      z-index: 10020;
+    }
+
+    .lew-search-backdrop.open { display: block; }
+
+    .lew-search-box {
+      background: #fffdfa;
+      margin: auto;
+      max-width: 720px;
+      padding: 24px;
+    }
+
+    .lew-search-top {
+      display: flex;
+      gap: 10px;
+    }
+
+    .lew-search-input {
+      border: 1px solid #d9d0c5;
+      font-size: 17px;
+      padding: 14px;
+      width: 100%;
+    }
+
+    .lew-search-close {
+      background: #202521;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      font-size: 20px;
+      width: 52px;
+    }
+
+    .lew-search-results {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+      max-height: 55vh;
+      overflow: auto;
+    }
+
+    .lew-search-result {
+      align-items: center;
+      background: #f5f0e9;
+      border: 0;
+      cursor: pointer;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 62px 1fr auto;
+      padding: 10px;
+      text-align: left;
+      width: 100%;
+    }
+
+    .lew-search-result:hover { background: #eaded1; }
+
+    .lew-search-result img {
+      height: 62px;
+      object-fit: cover;
+      width: 62px;
+    }
+
+    .lew-search-result strong { display: block; }
+    .lew-search-result span { color: #777; font-size: 13px; }
+  `;
+  document.head.appendChild(searchStyle);
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'lew-search-backdrop';
+  backdrop.innerHTML = `
+    <div class="lew-search-box">
+      <div class="lew-search-top">
+        <input class="lew-search-input" type="search" placeholder="Busca un disfraz, personaje o tema..." autofocus>
+        <button class="lew-search-close" aria-label="Cerrar">×</button>
+      </div>
+      <div class="lew-search-results"></div>
+    </div>
+  `;
+  document.body.appendChild(backdrop);
+
+  const input = backdrop.querySelector('.lew-search-input');
+  const results = backdrop.querySelector('.lew-search-results');
+
+  const money = (value) => `S/ ${Number(value).toFixed(2).replace('.', ',')}`;
+
+  function showResults(text = '') {
+    const term = text.toLowerCase().trim();
+
+    const list = products.filter((product) =>
+      product.name.toLowerCase().includes(term) ||
+      (product.color || '').toLowerCase().includes(term)
+    );
+
+    results.innerHTML = list.length
+      ? list.map((product) => `
+          <button class="lew-search-result" data-product-name="${product.name}">
+            <img src="${product.image}" alt="${product.name}">
+            <div>
+              <strong>${product.name}</strong>
+              <span>${product.color || 'Disfraz LEWMAN'}</span>
+            </div>
+            <b>${money(product.price)}</b>
+          </button>
+        `).join('')
+      : '<p>No encontramos disfraces con esa búsqueda.</p>';
+  }
+
+  function openSearch() {
+    backdrop.classList.add('open');
+    input.value = '';
+    showResults();
+    setTimeout(() => input.focus(), 50);
+  }
+
+  function closeSearch() {
+    backdrop.classList.remove('open');
+  }
+
+  document.addEventListener('click', (event) => {
+    const searchButton = event.target.closest('[data-search]');
+
+    if (searchButton) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      openSearch();
+    }
+  }, true);
+
+  input.addEventListener('input', () => showResults(input.value));
+
+  results.addEventListener('click', (event) => {
+    const item = event.target.closest('[data-product-name]');
+    if (!item) return;
+
+    const product = products.find((itemProduct) => itemProduct.name === item.dataset.productName);
+    if (!product) return;
+
+    renderProducts([product]);
+    closeSearch();
+    document.querySelector('#catalogo').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  backdrop.querySelector('.lew-search-close').addEventListener('click', closeSearch);
+
+  backdrop.addEventListener('click', (event) => {
+    if (event.target === backdrop) closeSearch();
+  });
+})();
+</script><script>
+(() => {
+  const animationStyle = document.createElement('style');
+  animationStyle.textContent = `
+    .lew-progress {
+      background: #c4484c;
+      height: 3px;
+      left: 0;
+      position: fixed;
+      top: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      width: 100%;
+      z-index: 10050;
+    }
+
+    .lew-card-enter {
+      animation: lewCardEnter .55s both;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    .lew-pop {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .lew-pop.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes lewCardEnter {
+      from { opacity: 0; transform: translateY(24px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lew-card-enter { animation: none; }
+      .lew-pop { opacity: 1; transform: none; transition: none; }
+    }
+  `;
+  document.head.appendChild(animationStyle);
+
+  const progress = document.createElement('div');
+  progress.className = 'lew-progress';
+  document.body.appendChild(progress);
+
+  const nav = document.querySelector('.main-nav');
+
+  function updateScroll() {
+    const maximum = document.documentElement.scrollHeight - window.innerHeight;
+    const current = maximum > 0 ? window.scrollY / maximum : 0;
+    progress.style.transform = `scaleX(${current})`;
+
+    if (nav) {
+      nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+    }
+  }
+
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  updateScroll();
+
+  function animateProducts() {
+    document.querySelectorAll('[data-products] .product').forEach((card, index) => {
+      if (!card.classList.contains('lew-card-enter')) {
+        card.style.setProperty('--delay', `${(index % 6) * 70}ms`);
+        card.classList.add('lew-card-enter');
+      }
+    });
+  }
+
+  animateProducts();
+
+  const productsGrid = document.querySelector('[data-products]');
+  if (productsGrid) {
+    new MutationObserver(animateProducts).observe(productsGrid, { childList: true });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.category, .benefit, .testimonial').forEach((item) => {
+    item.classList.add('lew-pop');
+    observer.observe(item);
+  });
+})();
+</script><script>
+(() => {
+  const whatsappNumber = '51954774316';
+
+  const whatsappStyle = document.createElement('style');
+  whatsappStyle.textContent = `
+    .lew-product-whatsapp {
+      background: #25D366;
+      border: 0;
+      color: white;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 10px;
+      padding: 10px 12px;
+      width: 100%;
+    }
+
+    .lew-product-whatsapp:hover {
+      background: #1ebc5b;
+      transform: translateY(-2px);
+    }
+
+    .whatsapp-float::after {
+      background: #202521;
+      border-radius: 4px;
+      bottom: 68px;
+      color: #fff;
+      content: '¿Necesitas ayuda?';
+      font-size: 12px;
+      opacity: 0;
+      padding: 8px 10px;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      transition: opacity .2s ease;
+      white-space: nowrap;
+    }
+
+    .whatsapp-float:hover::after {
+      opacity: 1;
+    }
+  `;
+  document.head.appendChild(whatsappStyle);
+
+  function addWhatsAppButtons() {
+    document.querySelectorAll('[data-products] .product').forEach((card) => {
+      const buyButton = card.querySelector('[data-buy]');
+
+      if (!buyButton || card.querySelector('.lew-product-whatsapp')) return;
+
+      const button = document.createElement('button');
+      button.className = 'lew-product-whatsapp';
+      button.type = 'button';
+      button.textContent = 'Consultar por WhatsApp';
+
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const product = products.find((item) => item.name === buyButton.dataset.buy);
+        if (!product) return;
+
+        const message =
+          `Hola, deseo consultar por este disfraz:%0A%0A` +
+          `*${product.name}*%0A` +
+          `Precio: S/ ${Number(product.price).toFixed(2)}%0A` +
+          `Color: ${product.color || 'Consultar'}%0A%0A` +
+          `¿Qué tallas tienen disponibles?`;
+
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+      });
+
+      buyButton.insertAdjacentElement('afterend', button);
+    });
+  }
+
+  addWhatsAppButtons();
+
+  const productList = document.querySelector('[data-products]');
+  if (productList) {
+    new MutationObserver(addWhatsAppButtons).observe(productList, {
+      childList: true
+    });
+  }
+
+  const floatButton = document.querySelector('.whatsapp-float');
+  if (floatButton) {
+    floatButton.href =
+      `https://wa.me/${whatsappNumber}?text=Hola%2C%20quiero%20consultar%20por%20un%20disfraz.`;
+  }
+})();
+</script><script>
+(() => {
+  const mobileStyle = document.createElement('style');
+  mobileStyle.textContent = `
+    .lew-mobile-nav { display: none; }
+
+    @media (max-width: 650px) {
+      body { padding-bottom: 78px; }
+
+      .lew-mobile-nav {
+        align-items: center;
+        background: rgba(255,253,250,.96);
+        border-top: 1px solid #e5ddd3;
+        bottom: 0;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        left: 0;
+        padding: 8px 4px;
+        position: fixed;
+        right: 0;
+        z-index: 10000;
+      }
+
+      .lew-mobile-nav button,
+      .lew-mobile-nav a {
+        align-items: center;
+        background: none;
+        border: 0;
+        color: #252a26;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+        gap: 4px;
+        justify-content: center;
+        min-height: 54px;
+        text-decoration: none;
+      }
+
+      .lew-mobile-nav b {
+        font-size: 20px;
+        font-weight: 400;
+      }
+
+      .whatsapp-float {
+        bottom: 90px;
+        right: 16px;
+      }
+
+      .product-grid {
+        gap: 18px 10px;
+      }
+
+      .product-name {
+        font-size: 14px;
+      }
+
+      .button {
+        padding: 13px 17px;
+      }
+    }
+  `;
+  document.head.appendChild(mobileStyle);
+
+  const mobileNav = document.createElement('nav');
+  mobileNav.className = 'lew-mobile-nav';
+  mobileNav.innerHTML = `
+    <button data-mobile-home><b>⌂</b>Inicio</button>
+    <button data-mobile-search><b>⌕</b>Buscar</button>
+    <button data-mobile-catalog><b>▦</b>Catálogo</button>
+    <button data-mobile-cart><b>🛒</b>Carrito</button>
+    <a href="https://wa.me/51954774316?text=Hola%2C%20quiero%20consultar%20por%20un%20disfraz." target="_blank"><b>◉</b>WhatsApp</a>
+  `;
+  document.body.appendChild(mobileNav);
+
+  mobileNav.querySelector('[data-mobile-home]').addEventListener('click', () => {
+    document.querySelector('#inicio').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  mobileNav.querySelector('[data-mobile-search]').addEventListener('click', () => {
+    document.querySelector('[data-search]').click();
+  });
+
+  mobileNav.querySelector('[data-mobile-catalog]').addEventListener('click', () => {
+    document.querySelector('#catalogo').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  mobileNav.querySelector('[data-mobile-cart]').addEventListener('click', () => {
+    document.querySelector('[data-cart]').click();
+  });
+})();
+</script><script>
+(() => {
+  const offerStyle = document.createElement('style');
+  offerStyle.textContent = `
+    .lew-offers {
+      background: #202521;
+      color: white;
+      padding: 76px max(24px, 8vw);
+    }
+
+    .lew-offers-head {
+      align-items: end;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .lew-offers h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(34px, 4vw, 52px);
+      margin: 0;
+    }
+
+    .lew-offers p { color: #d7d7d2; }
+
+    .lew-offers-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .lew-offer-card {
+      background: #fffdfa;
+      color: #202521;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .lew-offer-card img {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .lew-offer-copy { padding: 18px; }
+
+    .lew-offer-tag {
+      background: #c4484c;
+      color: white;
+      font-size: 11px;
+      left: 12px;
+      letter-spacing: .1em;
+      padding: 8px 10px;
+      position: absolute;
+      text-transform: uppercase;
+      top: 12px;
+    }
+
+    .lew-offer-price {
+      font-size: 19px;
+      font-weight: 700;
+      margin: 9px 0 14px;
+    }
+
+    .lew-offer-old {
+      color: #888;
+      font-size: 14px;
+      margin-left: 6px;
+      text-decoration: line-through;
+    }
+
+    .lew-offer-card button {
+      background: #202521;
+      border: 0;
+      color: white;
+      cursor: pointer;
+      padding: 12px;
+      width: 100%;
+    }
+
+    @media (max-width: 650px) {
+      .lew-offers-grid { grid-template-columns: 1fr; }
+      .lew-offers-head { align-items: start; flex-direction: column; }
+    }
+  `;
+  document.head.appendChild(offerStyle);
+
+  const catalog = document.querySelector('#catalogo');
+  if (!catalog) return;
+
+  const featured = products
+    .filter((product) => product.tag === 'Oferta' || product.tag === 'Nuevo' || product.oldPrice)
+    .slice(0, 3);
+
+  const selected = featured.length ? featured : products.slice(0, 3);
+  const money = (value) => `S/ ${Number(value).toFixed(2).replace('.', ',')}`;
+
+  const offerSection = document.createElement('section');
+  offerSection.className = 'lew-offers';
+  offerSection.innerHTML = `
+    <div class="lew-offers-head">
+      <div>
+        <p>SELECCIÓN ESPECIAL LEWMAN</p>
+        <h2>Ofertas y novedades</h2>
+      </div>
+      <p>Disfraces destacados para tu próxima celebración.</p>
+    </div>
+
+    <div class="lew-offers-grid">
+      ${selected.map((product) => `
+        <article class="lew-offer-card">
+          <span class="lew-offer-tag">${product.tag || 'Destacado'}</span>
+          <img src="${product.image}" alt="${product.name}">
+          <div class="lew-offer-copy">
+            <strong>${product.name}</strong>
+            <div class="lew-offer-price">
+              ${money(product.price)}
+              ${product.oldPrice && product.oldPrice > product.price
+                ? `<span class="lew-offer-old">${money(product.oldPrice)}</span>`
+                : ''}
+            </div>
+            <button type="button" data-buy="${product.name}">Agregar al carrito</button>
+          </div>
+        </article>
+      `).join('')}
+    </div>
+  `;
+
+  catalog.parentNode.insertBefore(offerSection, catalog);
+})();
+</script></body>
+</html>
